@@ -1,18 +1,14 @@
 import { FC } from 'react'
 import { PageTitle } from '../../../_metronic/layout/core'
 import { useIntl } from 'react-intl'
-import { MixedWidget10, TablesWidget10, ListsWidget3 } from '../../../_metronic/partials/widgets'
+import { MixedWidget10, TablesWidget10, ListsWidget3, MixedWidget1, MixedWidget2, MixedWidget4 } from '../../../_metronic/partials/widgets'
 
 const DashboardAdminPage: FC = () => {
     return (
         <>
             <div className='row gy-5 g-xl-8'>
                 <div className='col-xxl-4'>
-                    <MixedWidget10
-                        className='card-xl-stretch mb-xl-8'
-                        chartColor='danger'
-                        chartHeight='200px'
-                    />
+                    <MixedWidget4 className={''} color={''} image={''} title={''} date={''} progress={''} />
                 </div>
 
                 <div className='col-xxl-8'>
