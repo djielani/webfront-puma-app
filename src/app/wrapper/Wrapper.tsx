@@ -41,7 +41,7 @@ const Wrapper: FC = () => {
     return (
         <>
             <PageTitle breadcrumbs={[]}>{pageName}</PageTitle>
-            {/* cette partie va contenir les elements des autres pages comme produit */}
+            {/* cette partie va contenir les elements des autres pages */}
         </>
     )
 }

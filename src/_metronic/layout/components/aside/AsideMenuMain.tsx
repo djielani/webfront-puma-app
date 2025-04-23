@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-target-blank */
 import React from 'react'
 import {useIntl} from 'react-intl'
 import {KTSVG} from '../../../helpers'
@@ -16,60 +15,89 @@ export function AsideMenuMain() {
         title={intl.formatMessage({id: 'MENU.DASHBOARD'})}
         fontIcon='bi-app-indicator'
       />
+
+      <AsideMenuItemWithSub
+        to='/users'
+        title='Utilisateurs'
+        fontIcon='bi-people'
+        icon='/media/icons/duotune/general/gen051.svg'
+      >
+        <AsideMenuItem to='/users/liste' title='Liste' hasBullet={true} />
+        <AsideMenuItem to='/users/nouveaux' title='Nouveaux' hasBullet={true} />
+        <AsideMenuItem to='/users/roles' title='Rôles' hasBullet={true} />
+      </AsideMenuItemWithSub>
+
+      <AsideMenuItemWithSub
+        to='/produits'
+        title='Produits'
+        fontIcon='bi-basket'
+        icon='/media/icons/duotune/general/gen019.svg'
+      >
+        <AsideMenuItem to='/produits/liste' title='Liste' hasBullet={true} />
+        <AsideMenuItem to='/produits/attente' title='En attente' hasBullet={true} />
+        <AsideMenuItem to='/produits/ajouter' title='Ajouter' hasBullet={true} />
+        <AsideMenuItem to='/produits/categories' title='Catégories' hasBullet={true} />
+      </AsideMenuItemWithSub>
+
       <AsideMenuItem
         to='/formations'
-        icon='/media/icons/duotune/general/gen019.svg'
+        icon='/media/icons/duotune/education/edu001.svg'
         title='Formations'
-        fontIcon='bi-layers'
+        fontIcon='bi-book'
       />
-      <AsideMenuItem
-        to='/produits'
-        icon='/media/icons/duotune/general/gen019.svg'
-        title='Produits'
-        fontIcon='bi-layers'
-      />
-      <AsideMenuItem
-        to='/accompagnement'
-        title='Accompagnement'
-        icon='/media/icons/duotune/general/gen019.svg'
-        fontIcon='bi-layers'
-      />
+
+      <AsideMenuItemWithSub
+        to='/vendeurs'
+        title='Vendeurs'
+        fontIcon='bi-shop'
+        icon='/media/icons/duotune/ecommerce/ecm004.svg'
+      >
+        <AsideMenuItem to='/vendeurs/liste' title='Liste' hasBullet={true} />
+        <AsideMenuItem to='/vendeurs/attente' title='À valider' hasBullet={true} />
+        <AsideMenuItem to='/vendeurs/blocages' title='Blocages' hasBullet={true} />
+      </AsideMenuItemWithSub>
+
       <AsideMenuItem
         to='/fournisseurs'
         title='Fournisseurs'
-        icon='/media/icons/duotune/general/gen019.svg'
-        fontIcon='bi-layers'
+        icon='/media/icons/duotune/ecommerce/ecm001.svg'
+        fontIcon='bi-truck'
       />
-      <AsideMenuItem
-        to='/vendeurs'
-        title='Vendeurs'
-        icon='/media/icons/duotune/general/gen019.svg'
-        fontIcon='bi-layers'
-      />
-      {/* <AsideMenuItemWithSub
-        to='/apps/chat'
-        title='Chat'
-        fontIcon='bi-chat-left'
-        icon='/media/icons/duotune/communication/com012.svg'
+
+      <AsideMenuItemWithSub
+        to='/accompagnement'
+        title='Projets'
+        icon='/media/icons/duotune/files/fil008.svg'
+        fontIcon='bi-kanban'
       >
-        <AsideMenuItem to='/apps/chat/private-chat' title='Private Chat' hasBullet={true} />
-        <AsideMenuItem to='/apps/chat/group-chat' title='Group Chart' hasBullet={true} />
-        <AsideMenuItem to='/apps/chat/drawer-chat' title='Drawer Chart' hasBullet={true} />
-      </AsideMenuItemWithSub> */}
+        <AsideMenuItem to='/accompagnement/demandes' title='Demandes' hasBullet={true} />
+        <AsideMenuItem to='/accompagnement/suivi' title='Suivi' hasBullet={true} />
+        <AsideMenuItem to='/accompagnement/conseillers' title='Conseillers' hasBullet={true} />
+      </AsideMenuItemWithSub>
+
       <AsideMenuItem
-        to='/apps/user-management/users'
-        icon='/media/icons/duotune/general/gen051.svg'
-        title='User management'
-        fontIcon='bi-layers'
+        to='/cooperatives'
+        title='Coopératives'
+        icon='/media/icons/duotune/abstract/abs042.svg'
+        fontIcon='bi-people'
       />
+
+      <AsideMenuItem
+        to='/rapports'
+        title='Rapports'
+        icon='/media/icons/duotune/graphs/gra005.svg'
+        fontIcon='bi-bar-chart'
+      />
+
       <div className='menu-item'>
         <div className='menu-content'>
           <div className='separator mx-1 my-4'></div>
         </div>
       </div>
+
       <div className='menu-item'>
         <a
-          target='_blank'
+          target='_blank' rel="noreferer noreferrer"
           className='menu-link'
           href={process.env.REACT_APP_PREVIEW_DOCS_URL + '/docs/changelog'}
         >
@@ -82,3 +110,4 @@ export function AsideMenuMain() {
     </>
   )
 }
+export default AsideMenuMain

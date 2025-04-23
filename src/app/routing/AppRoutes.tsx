@@ -23,6 +23,7 @@ const AppRoutes: FC = () => {
   const {currentUser} = useAuth()
   return (
     <BrowserRouter basename={PUBLIC_URL}>
+    {/* // <BrowserRouter basename='/puma-app'> */}
       <Routes>
         <Route element={<App />}>
           <Route path='error/*' element={<ErrorsPage />} />

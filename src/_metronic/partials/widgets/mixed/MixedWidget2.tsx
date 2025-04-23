@@ -16,28 +16,22 @@ type Props = {
 const MixedWidget2: React.FC<Props> = ({className, chartColor, chartHeight, strokeColor}) => {
   const chartRef = useRef<HTMLDivElement | null>(null)
   const {mode} = useThemeMode()
+
   const refreshChart = () => {
-    if (!chartRef.current) {
-      return
-    }
+    if (!chartRef.current) return
 
     const chart = new ApexCharts(
       chartRef.current,
       chartOptions(chartHeight, chartColor, strokeColor)
     )
-    if (chart) {
-      chart.render()
-    }
-
+    if (chart) chart.render()
     return chart
   }
 
   useEffect(() => {
     const chart = refreshChart()
     return () => {
-      if (chart) {
-        chart.destroy()
-      }
+      if (chart) chart.destroy()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chartRef, mode])
@@ -46,9 +40,8 @@ const MixedWidget2: React.FC<Props> = ({className, chartColor, chartHeight, stro
     <div className={`card ${className}`}>
       {/* begin::Header */}
       <div className={`card-header border-0 py-5 bg-${chartColor}`}>
-        <h3 className='card-title fw-bold text-white'>Sales Statistics</h3>
+        <h3 className='card-title fw-bold text-white'>Projets & Accompagnements</h3>
         <div className='card-toolbar'>
-          {/* begin::Menu */}
           <button
             type='button'
             className='btn btn-sm btn-icon btn-color-white btn-active-white btn-active-color- border-0 me-n3'
@@ -59,74 +52,60 @@ const MixedWidget2: React.FC<Props> = ({className, chartColor, chartHeight, stro
             <KTSVG path='/media/icons/duotune/general/gen024.svg' className='svg-icon-2' />
           </button>
           <Dropdown1 />
-          {/* end::Menu */}
         </div>
       </div>
       {/* end::Header */}
+
       {/* begin::Body */}
       <div className='card-body p-0'>
-        {/* begin::Chart */}
         <div
           ref={chartRef}
           className={`mixed-widget-2-chart card-rounded-bottom bg-${chartColor}`}
         ></div>
-        {/* end::Chart */}
-        {/* begin::Stats */}
+
         <div className='card-p mt-n20 position-relative'>
-          {/* begin::Row */}
           <div className='row g-0'>
-            {/* begin::Col */}
             <div className='col bg-light-warning px-6 py-8 rounded-2 me-7 mb-7'>
               <KTSVG
-                path='/media/icons/duotune/general/gen032.svg'
+                path='/media/icons/duotune/files/fil004.svg'
                 className='svg-icon-3x svg-icon-warning d-block my-2'
               />
               <a href='#' className='text-warning fw-semibold fs-6'>
-                Weekly Sales
+                Projets actifs
               </a>
             </div>
-            {/* end::Col */}
-            {/* begin::Col */}
             <div className='col bg-light-primary px-6 py-8 rounded-2 mb-7'>
               <KTSVG
-                path='/media/icons/duotune/arrows/arr075.svg'
+                path='/media/icons/duotune/communication/com012.svg'
                 className='svg-icon-3x svg-icon-primary d-block my-2'
               />
               <a href='#' className='text-primary fw-semibold fs-6'>
-                New Users
+                Nouveaux accompagnements
               </a>
             </div>
-            {/* end::Col */}
           </div>
-          {/* end::Row */}
-          {/* begin::Row */}
+
           <div className='row g-0'>
-            {/* begin::Col */}
             <div className='col bg-light-danger px-6 py-8 rounded-2 me-7'>
               <KTSVG
-                path='/media/icons/duotune/abstract/abs027.svg'
+                path='/media/icons/duotune/ecommerce/ecm008.svg'
                 className='svg-icon-3x svg-icon-danger d-block my-2'
               />
               <a href='#' className='text-danger fw-semibold fs-6 mt-2'>
-                Item Orders
+                Projets clôturés
               </a>
             </div>
-            {/* end::Col */}
-            {/* begin::Col */}
             <div className='col bg-light-success px-6 py-8 rounded-2'>
               <KTSVG
-                path='/media/icons/duotune/communication/com010.svg'
+                path='/media/icons/duotune/general/gen014.svg'
                 className='svg-icon-3x svg-icon-success d-block my-2'
               />
               <a href='#' className='text-success fw-semibold fs-6 mt-2'>
-                Bug Reports
+                Taux de réussite
               </a>
             </div>
-            {/* end::Col */}
           </div>
-          {/* end::Row */}
         </div>
-        {/* end::Stats */}
       </div>
       {/* end::Body */}
     </div>
@@ -145,8 +124,8 @@ const chartOptions = (
   return {
     series: [
       {
-        name: 'Net Profit',
-        data: [30, 45, 32, 70, 40, 40, 40],
+        name: 'Projets lancés',
+        data: [10, 14, 20, 25, 22, 30, 28],
       },
     ],
     chart: {
@@ -164,7 +143,6 @@ const chartOptions = (
       },
       dropShadow: {
         enabled: true,
-        enabledOnSeries: undefined,
         top: 5,
         left: 0,
         blur: 3,
@@ -172,7 +150,6 @@ const chartOptions = (
         opacity: 0.5,
       },
     },
-    plotOptions: {},
     legend: {
       show: false,
     },
@@ -190,7 +167,7 @@ const chartOptions = (
       colors: [strokeColor],
     },
     xaxis: {
-      categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
       axisBorder: {
         show: false,
       },
@@ -216,33 +193,12 @@ const chartOptions = (
     },
     yaxis: {
       min: 0,
-      max: 80,
+      max: 40,
       labels: {
         show: false,
         style: {
           colors: labelColor,
           fontSize: '12px',
-        },
-      },
-    },
-    states: {
-      normal: {
-        filter: {
-          type: 'none',
-          value: 0,
-        },
-      },
-      hover: {
-        filter: {
-          type: 'none',
-          value: 0,
-        },
-      },
-      active: {
-        allowMultipleDataPointsSelection: false,
-        filter: {
-          type: 'none',
-          value: 0,
         },
       },
     },
@@ -252,7 +208,7 @@ const chartOptions = (
       },
       y: {
         formatter: function (val) {
-          return '$' + val + ' thousands'
+          return val + ' projets'
         },
       },
       marker: {

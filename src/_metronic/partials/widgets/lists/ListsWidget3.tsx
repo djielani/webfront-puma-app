@@ -7,14 +7,56 @@ type Props = {
   className: string
 }
 
+type Task = {
+  title: string
+  dueDate: string
+  status: 'À faire' | 'En cours' | 'Terminé'
+  tag: string
+  project: string
+  color: 'success' | 'primary' | 'warning' | 'danger'
+}
+
+const tasks: Task[] = [
+  {
+    title: 'Planification atelier avec la coopérative de Kolda',
+    dueDate: 'Dans 3 jours',
+    status: 'À faire',
+    tag: 'Réunion',
+    project: 'Appui à l’agriculture durable',
+    color: 'primary',
+  },
+  {
+    title: 'Mise à jour des indicateurs du projet de transformation',
+    dueDate: 'Demain',
+    status: 'En cours',
+    tag: 'Reporting',
+    project: 'Agri-transformation Sédhiou',
+    color: 'success',
+  },
+  {
+    title: 'Validation du financement ANPEJ',
+    dueDate: 'Dans 5 jours',
+    status: 'À faire',
+    tag: 'Financement',
+    project: 'Insertion Jeunes Ziguinchor',
+    color: 'warning',
+  },
+  {
+    title: 'Rencontre DER/FJ sur les financements complémentaires',
+    dueDate: 'Dans 7 jours',
+    status: 'Terminé',
+    tag: 'Réunion',
+    project: 'Plateforme entrepreneuriale Dakar',
+    color: 'danger',
+  },
+]
+
 const ListsWidget3: React.FC<Props> = ({className}) => {
   return (
     <div className={`card ${className}`}>
-      {/* begin::Header */}
       <div className='card-header border-0'>
-        <h3 className='card-title fw-bold text-dark'>Todo</h3>
+        <h3 className='card-title fw-bold text-dark'>Todo par projet</h3>
         <div className='card-toolbar'>
-          {/* begin::Menu */}
           <button
             type='button'
             className='btn btn-sm btn-icon btn-color-primary btn-active-light-primary'
@@ -25,140 +67,33 @@ const ListsWidget3: React.FC<Props> = ({className}) => {
             <KTSVG path='/media/icons/duotune/general/gen024.svg' className='svg-icon-2' />
           </button>
           <Dropdown1 />
-          {/* end::Menu */}
         </div>
       </div>
-      {/* end::Header */}
-      {/* begin::Body */}
+
       <div className='card-body pt-2'>
-        {/* begin::Item */}
-        <div className='d-flex align-items-center mb-8'>
-          {/* begin::Bullet */}
-          <span className='bullet bullet-vertical h-40px bg-success'></span>
-          {/* end::Bullet */}
-          {/* begin::Checkbox */}
-          <div className='form-check form-check-custom form-check-solid mx-5'>
-            <input className='form-check-input' type='checkbox' value='' />
+        {tasks.map((task, index) => (
+          <div className='d-flex align-items-center mb-8' key={index}>
+            <span className={`bullet bullet-vertical h-40px bg-${task.color}`}></span>
+
+            <div className='form-check form-check-custom form-check-solid mx-5'>
+              <input className='form-check-input' type='checkbox' />
+            </div>
+
+            <div className='flex-grow-1'>
+              <a href='#' className='text-gray-800 text-hover-primary fw-bold fs-6'>
+                {task.title}
+              </a>
+              <div className='text-muted fw-semibold d-block'>
+                {task.project} • {task.dueDate}
+              </div>
+            </div>
+
+            <span className={`badge badge-light-${task.color} fs-8 fw-bold`}>
+              {task.tag}
+            </span>
           </div>
-          {/* end::Checkbox */}
-          {/* begin::Description */}
-          <div className='flex-grow-1'>
-            <a href='#' className='text-gray-800 text-hover-primary fw-bold fs-6'>
-              Create FireStone Logo
-            </a>
-            <span className='text-muted fw-semibold d-block'>Due in 2 Days</span>
-          </div>
-          {/* end::Description */}
-          <span className='badge badge-light-success fs-8 fw-bold'>New</span>
-        </div>
-        {/* end:Item */}
-        {/* begin::Item */}
-        <div className='d-flex align-items-center mb-8'>
-          {/* begin::Bullet */}
-          <span className='bullet bullet-vertical h-40px bg-primary'></span>
-          {/* end::Bullet */}
-          {/* begin::Checkbox */}
-          <div className='form-check form-check-custom form-check-solid mx-5'>
-            <input className='form-check-input' type='checkbox' value='' />
-          </div>
-          {/* end::Checkbox */}
-          {/* begin::Description */}
-          <div className='flex-grow-1'>
-            <a href='#' className='text-gray-800 text-hover-primary fw-bold fs-6'>
-              Stakeholder Meeting
-            </a>
-            <span className='text-muted fw-semibold d-block'>Due in 3 Days</span>
-          </div>
-          {/* end::Description */}
-          <span className='badge badge-light-primary fs-8 fw-bold'>New</span>
-        </div>
-        {/* end:Item */}
-        {/* begin::Item */}
-        <div className='d-flex align-items-center mb-8'>
-          {/* begin::Bullet */}
-          <span className='bullet bullet-vertical h-40px bg-warning'></span>
-          {/* end::Bullet */}
-          {/* begin::Checkbox */}
-          <div className='form-check form-check-custom form-check-solid mx-5'>
-            <input className='form-check-input' type='checkbox' value='' />
-          </div>
-          {/* end::Checkbox */}
-          {/* begin::Description */}
-          <div className='flex-grow-1'>
-            <a href='#' className='text-gray-800 text-hover-primary fw-bold fs-6'>
-              Scoping &amp; Estimations
-            </a>
-            <span className='text-muted fw-semibold d-block'>Due in 5 Days</span>
-          </div>
-          {/* end::Description */}
-          <span className='badge badge-light-warning fs-8 fw-bold'>New</span>
-        </div>
-        {/* end:Item */}
-        {/* begin::Item */}
-        <div className='d-flex align-items-center mb-8'>
-          {/* begin::Bullet */}
-          <span className='bullet bullet-vertical h-40px bg-primary'></span>
-          {/* end::Bullet */}
-          {/* begin::Checkbox */}
-          <div className='form-check form-check-custom form-check-solid mx-5'>
-            <input className='form-check-input' type='checkbox' value='' />
-          </div>
-          {/* end::Checkbox */}
-          {/* begin::Description */}
-          <div className='flex-grow-1'>
-            <a href='#' className='text-gray-800 text-hover-primary fw-bold fs-6'>
-              KPI App Showcase
-            </a>
-            <span className='text-muted fw-semibold d-block'>Due in 2 Days</span>
-          </div>
-          {/* end::Description */}
-          <span className='badge badge-light-primary fs-8 fw-bold'>New</span>
-        </div>
-        {/* end:Item */}
-        {/* begin::Item */}
-        <div className='d-flex align-items-center mb-8'>
-          {/* begin::Bullet */}
-          <span className='bullet bullet-vertical h-40px bg-danger'></span>
-          {/* end::Bullet */}
-          {/* begin::Checkbox */}
-          <div className='form-check form-check-custom form-check-solid mx-5'>
-            <input className='form-check-input' type='checkbox' value='' />
-          </div>
-          {/* end::Checkbox */}
-          {/* begin::Description */}
-          <div className='flex-grow-1'>
-            <a href='#' className='text-gray-800 text-hover-primary fw-bold fs-6'>
-              Project Meeting
-            </a>
-            <span className='text-muted fw-semibold d-block'>Due in 12 Days</span>
-          </div>
-          {/* end::Description */}
-          <span className='badge badge-light-danger fs-8 fw-bold'>New</span>
-        </div>
-        {/* end:Item */}
-        {/* begin::Item */}
-        <div className='d-flex align-items-center'>
-          {/* begin::Bullet */}
-          <span className='bullet bullet-vertical h-40px bg-success'></span>
-          {/* end::Bullet */}
-          {/* begin::Checkbox */}
-          <div className='form-check form-check-custom form-check-solid mx-5'>
-            <input className='form-check-input' type='checkbox' value='' />
-          </div>
-          {/* end::Checkbox */}
-          {/* begin::Description */}
-          <div className='flex-grow-1'>
-            <a href='#' className='text-gray-800 text-hover-primary fw-bold fs-6'>
-              Customers Update
-            </a>
-            <span className='text-muted fw-semibold d-block'>Due in 1 week</span>
-          </div>
-          {/* end::Description */}
-          <span className='badge badge-light-success fs-8 fw-bold'>New</span>
-        </div>
-        {/* end:Item */}
+        ))}
       </div>
-      {/* end::Body */}
     </div>
   )
 }
