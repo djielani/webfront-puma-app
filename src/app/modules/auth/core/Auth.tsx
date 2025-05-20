@@ -74,6 +74,7 @@ const AuthInit: FC<WithChildren> = ({children}) => {
         console.log('apiToken', apiToken)
         if (!didRequest.current) {
           const {data} = await getUserByToken(apiToken)
+          console.log('data', data)
           if (data) {
             setCurrentUser(data)
 
@@ -107,7 +108,9 @@ const AuthInit: FC<WithChildren> = ({children}) => {
 
     if (auth?.data?.access_token) {
       // requestUser(auth)
-      
+      localStorage.setItem('access_token', auth.data.access_token)
+      requestUser(auth.data.access_token)
+
             // 🎯 Redirection selon le rôle ici
             switch (auth?.data?.roles) {
               case 'ROLE_ADMIN':

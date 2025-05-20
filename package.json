@@ -2,7 +2,7 @@
   "name": "puma-app",
   "version": "8.1.2",
   "private": true,
-  "homepage": "/puma-app/",
+  "homepage": "/puma-app",
   "dependencies": {
     "@formatjs/intl-pluralrules": "4.3.3",
     "@formatjs/intl-relativetimeformat": "10.0.1",

@@ -77,9 +77,9 @@ const Vertical = () => {
 
                 {/* begin::Label*/}
                 <div className='stepper-label'>
-                  <h3 className='stepper-title'>Account Type</h3>
+                  <h3 className='stepper-title'>Type de Compte</h3>
 
-                  <div className='stepper-desc fw-semibold'>Setup Your Account Details</div>
+                  <div className='stepper-desc fw-semibold'>Definissez le type du compte à ajouter</div>
                 </div>
                 {/* end::Label*/}
               </div>

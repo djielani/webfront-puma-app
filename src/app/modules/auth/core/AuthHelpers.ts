@@ -29,7 +29,11 @@ const setAuth = (auth: AuthModel) => {
 
   try {
     const lsValue = JSON.stringify(auth)
+    console.log('auth__', auth)
+    
     localStorage.setItem(AUTH_LOCAL_STORAGE_KEY, lsValue)
+    localStorage.setItem('access_token', auth.data.access_token)
+
   } catch (error) {
     console.error('AUTH LOCAL STORAGE SAVE ERROR', error)
   }

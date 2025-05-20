@@ -17,12 +17,12 @@ import {App} from '../App'
  *
  * @see https://facebook.github.io/create-react-app/docs/using-the-public-folder
  */
-const {PUBLIC_URL} = process.env
+// const {PUBLIC_URL} = process.env
 
 const AppRoutes: FC = () => {
   const {currentUser} = useAuth()
   return (
-    <BrowserRouter basename={PUBLIC_URL}>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
     {/* // <BrowserRouter basename='/puma-app'> */}
       <Routes>
         <Route element={<App />}>
@@ -31,12 +31,12 @@ const AppRoutes: FC = () => {
           {currentUser ? (
             <>
               <Route path='/*' element={<PrivateRoutes />} />
-              <Route index element={<Navigate to='/dashboard' />} />
+              <Route index element={<Navigate to='dashboard' />} />
             </>
           ) : (
             <>
               <Route path='auth/*' element={<AuthPage />} />
-              <Route path='*' element={<Navigate to='/auth' />} />
+              <Route path='*' element={<Navigate to='auth' />} />
             </>
           )}
         </Route>

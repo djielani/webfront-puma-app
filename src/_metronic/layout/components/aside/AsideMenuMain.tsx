@@ -1,4 +1,3 @@
-import React from 'react'
 import {useIntl} from 'react-intl'
 import {KTSVG} from '../../../helpers'
 import {AsideMenuItemWithSub} from './AsideMenuItemWithSub'
@@ -22,8 +21,8 @@ export function AsideMenuMain() {
         fontIcon='bi-people'
         icon='/media/icons/duotune/general/gen051.svg'
       >
-        <AsideMenuItem to='/users/liste' title='Liste' hasBullet={true} />
-        <AsideMenuItem to='/users/nouveaux' title='Nouveaux' hasBullet={true} />
+        <AsideMenuItem to='/users' title='Liste' hasBullet={true} />
+        <AsideMenuItem to='/users/add' title='Ajouter' hasBullet={true} />
         <AsideMenuItem to='/users/roles' title='Rôles' hasBullet={true} />
       </AsideMenuItemWithSub>
 
@@ -33,7 +32,7 @@ export function AsideMenuMain() {
         fontIcon='bi-basket'
         icon='/media/icons/duotune/general/gen019.svg'
       >
-        <AsideMenuItem to='/produits/liste' title='Liste' hasBullet={true} />
+        <AsideMenuItem to='/produits' title='Liste' hasBullet={true} />
         <AsideMenuItem to='/produits/attente' title='En attente' hasBullet={true} />
         <AsideMenuItem to='/produits/ajouter' title='Ajouter' hasBullet={true} />
         <AsideMenuItem to='/produits/categories' title='Catégories' hasBullet={true} />
@@ -52,7 +51,7 @@ export function AsideMenuMain() {
         fontIcon='bi-shop'
         icon='/media/icons/duotune/ecommerce/ecm004.svg'
       >
-        <AsideMenuItem to='/vendeurs/liste' title='Liste' hasBullet={true} />
+        <AsideMenuItem to='/vendeurs' title='Liste' hasBullet={true} />
         <AsideMenuItem to='/vendeurs/attente' title='À valider' hasBullet={true} />
         <AsideMenuItem to='/vendeurs/blocages' title='Blocages' hasBullet={true} />
       </AsideMenuItemWithSub>

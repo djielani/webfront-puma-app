@@ -12,6 +12,10 @@ import DashboardBuyer from '../pages/dashboard/Buyer'
 import RoleProtectedRoute from './RoleProtectedRoute'
 import RedirectByRole from '../pages/dashboard/RedirectByRole'
 import Produits from '../pages/produit/Produits'
+import { UsersList } from '../modules/profile/components/UsersList'
+import ShowUser from '../pages/user/ShowUser'
+import AddUser from '../pages/user/AddUser'
+import Formation from '../pages/formation/Formation'
 
 const PrivateRoutes = () => {
   const ProfilePage = lazy(() => import('../modules/profile/ProfilePage'))
@@ -60,6 +64,12 @@ const PrivateRoutes = () => {
         <Route path='builder' element={<BuilderPageWrapper />} />
         <Route path='menu-test' element={<MenuTestPage />} />
         <Route path='produits' element={<Produits/>} />
+
+        {/* Users */}
+        <Route path='users' element={<ShowUser/>} />
+        <Route path='users/add' element={<AddUser/>} />
+          {/* Formations */}
+        <Route path='formations' element={<Formation/>} />
         {/* Modules Lazy loadés */}
         <Route
           path='crafted/pages/profile/*'
